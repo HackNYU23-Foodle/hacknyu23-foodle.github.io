@@ -11,12 +11,14 @@ class Home extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { calories: 0, fat: 0, carbs: 0, sugar: 0, protein: 0 };
-    this.state.name = this.props.foods[0].name;
-    this.state.image_url = this.props.foods[0].image_url;
+    // this.state = { 'name': this.props.name, 'image_url': this.props.image_url, 'calories': this.props.calories, 'fat': this.props.fat, 'carbs': this.props.carbs, 
+    // 'sugar': this.props.sugar, 'protein': this.props.protein };
+    // this.state. { 'calories': this.props.calories, 'fat': this.props.fat, 'carbs': this.props.carbs, 'sugar': this.props.sugar, 'protein': this.props.protein }; 
+    this.state = {'name': this.props.name, 'image_url': this.props.image_url, 'calories': 0, 'fat': 0, 'carbs': 0, 'sugar': 0, 'protein': 0, 
+    'actual_calories': this.props.calories, 'actual_fat': this.props.fat, 'actual_carbs': this.props.carbs, 'actual_sugar': this.props.sugar, 'actual_protein': this.props.protein}; 
+    console.log(this.props);
   }
 
-  //name, image_url, 
   handleChange(event) {
     if (event.target.id == "calories") {
       this.setState({ calories: event.target.value });
@@ -33,7 +35,48 @@ class Home extends React.Component {
 
   handleSubmit(event) { 
     event.preventDefault();
-    this.setState({ calories: event.target.value, fat: event.target.value, carbs: event.target.value, sugar: event.target.value, protein: event.target.value });
+    // this.setState({ calories: event.target.value, fat: event.target.value, carbs: event.target.value, sugar: event.target.value, protein: event.target.value });
+
+    //write code to check if answers are correct within a 10% margin of error
+    let calories = this.state.calories;
+    let fat = this.state.fat;
+    let carbs = this.state.carbs;
+    let sugar = this.state.sugar;
+    let protein = this.state.protein;
+
+    let actual_calories = this.state.actual_calories;
+    let actual_fat = this.state.actual_fat;
+    let actual_carbs = this.state.actual_carbs;
+    let actual_sugar = this.state.actual_sugar;
+    let actual_protein = this.state.actual_protein;
+
+    let calories_correct = false
+    let fat_correct = false
+    let carbs_correct = false
+    let sugar_correct = false
+    let protein_correct = false
+
+    if (calories >= actual_calories * 0.8 && calories <= actual_calories * 1.1) {
+      calories_correct = true
+    }
+    if (fat >= actual_fat * 0.9 && fat <= actual_fat * 1.1) {
+      fat_correct = true
+    }
+    if (carbs >= actual_carbs * 0.9 && carbs <= actual_carbs * 1.1) {
+      carbs_correct = true
+    }
+    if (sugar >= actual_sugar * 0.9 && sugar <= actual_sugar * 1.1) {
+      sugar_correct = true
+    }
+    if (protein >= actual_protein * 0.9 && protein <= actual_protein * 1.1) {
+      protein_correct = true
+    }
+
+    if (calories_correct && fat_correct && carbs_correct && sugar_correct && protein_correct) {
+      alert("You Got It!");
+    } else {
+      alert("Not quite there yet...");
+    }
   }
 
   render() {
@@ -48,26 +91,19 @@ class Home extends React.Component {
           <h1>Foodle</h1>
           <h2> Guess the Info! </h2>
           <h2> {this.state.name} </h2>
-          <Image src="/apple.jpg" alt="Foodle" width={500} height={500} />
+          <img src={this.state.image_url} alt="Foodle" width={500} height={500} />
           <form className="foodle_form" onSubmit={this.handleSubmit}>   
-            <TextField id="calories" label="Calories" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0}/>
-            <TextField id="fat" label="Fat" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0}/>
-            <TextField id="carbs" label="Carbohydrates" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0}/>
-            <TextField id="sugar" label="Sugar" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0}/>
-            <TextField id="protein" label="Protein" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0}/>
+            <TextField id="calories" label="Calories" type="number" InputLabelProps={{ shrink: true }} width="4px" onChange={this.handleChange} defaultValue={0} required/>
+            <TextField id="fat" label="Fat" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required/>
+            <TextField id="carbs" label="Carbohydrates" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />
+            <TextField id="sugar" label="Sugar" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />
+            <TextField id="protein" label="Protein" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />
             <button type="submit">Submit</button>
           </form>
         </main>
 
         <footer>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by Aneesh Maganti, Thaison Le, Calvin Tian, Michael Duong, and Anish Kulkarni  
-            Sponsered by Chipotle
-          </a>
+          Powered by Aneesh Maganti, Thaison Le, Calvin Tian, Michael Duong, and Anish Kulkarni
         </footer>
 
         <style jsx>{`
@@ -126,21 +162,15 @@ class Home extends React.Component {
 }
 
 export async function getServerSideProps(context) {
-  const foods = [
-    {
-      "name": "Apple",
-      "image_url": "https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png",
-      "calories": 95,
-      "fat": 0.3,
-      "carbs": 25, 
-      "sugar": 19,
-      "protein": 0.5
-    },
-  ]
-
   return {
     props: {
-      foods
+      "name": "Apple",
+      "image_url": "https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png",
+      "calories": 52,
+      "fat": 1,
+      "carbs": 13.8, 
+      "sugar": 10.4,
+      "protein": 1
     }
   }
 }
