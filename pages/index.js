@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image'
+import Reverse from "./reverse";
 
 export default function Home() {
   return (
@@ -10,14 +11,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Foodle</h1>
-        <h2> Guess the Info! </h2>
-        <Image src="/apple.jpg" alt="Foodle" width={500} height={500} />
-        <form action='/results'>
-          <input type="text" name="guess" placeholder="Guess the Info!"/>
-          <input type="submit" value="Submit"/>
-        </form>
+      <main style={{backgroundColor:'orange'}}>
+        {/*<h1>Foodle</h1>*/}
+        {/*<h2> Guess the Info! </h2>*/}
+        {/*<Image src="/apple.jpg" alt="Foodle" width={500} height={500} />*/}
+        {/*<form action='/results'>*/}
+        {/*  <input type="text" name="guess" placeholder="Guess the Info!"/>*/}
+        {/*  <input type="submit" value="Submit"/>*/}
+        {/*</form>*/}
+          <Reverse/>
 
       </main>
 
@@ -33,9 +35,10 @@ export default function Home() {
 
       <style jsx>{`
         main {
-          padding: 5rem 0;
+          //padding: 5rem 0;
           flex: 1;
           display: flex;
+          width:100%;
           flex-direction: column;
           justify-content: center;
           align-items: center;

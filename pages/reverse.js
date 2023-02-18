@@ -1,64 +1,37 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import ReverseAnswerContainer from "./reverseComps/ReverseAnswerContainer";
+import GuessBox from "./reverseComps/GuessBox";
+import CategoryContainer from "./reverseComps/CategoryContainer";
+
+
+function handleEnter() { // Callback prop to GuessBox
+    console.log("Enter handled");
+}
 
 export default function Reverse() {
+
+
+
     return (
         <div className={styles.container}>
             <Head>
-                <title>Create Next App</title>
+                <title>Reverse Foodle</title>
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+                <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100&display=swap" rel="stylesheet"/>
             </Head>
 
-            <main>
-                <h1 className={styles.title}>
-                    Welcome to <a href="https://nextjs.org">Next.js!</a>
-                </h1>
+            <div>
+                {/*<GuessBox handleEnter={handleEnter}/>*/}
+                <CategoryContainer/>
+            </div>
+            <div>
+                <ReverseAnswerContainer/>
+            </div>
 
-                <p className={styles.description}>
-                    Get started by editing <code>pages/index.js</code>
-                </p>
 
-                <div className={styles.grid}>
-                    <a href="https://nextjs.org/docs" className={styles.card}>
-                        <h3>Documentation &rarr;</h3>
-                        <p>Find in-depth information about Next.js features and API.</p>
-                    </a>
-
-                    <a href="https://nextjs.org/learn" className={styles.card}>
-                        <h3>Learn &rarr;</h3>
-                        <p>Learn about Next.js in an interactive course with quizzes!</p>
-                    </a>
-
-                    <a
-                        href="https://github.com/vercel/next.js/tree/master/examples"
-                        className={styles.card}
-                    >
-                        <h3>Examples &rarr;</h3>
-                        <p>Discover and deploy boilerplate example Next.js projects.</p>
-                    </a>
-
-                    <a
-                        href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                        className={styles.card}
-                    >
-                        <h3>Deploy &rarr;</h3>
-                        <p>
-                            Instantly deploy your Next.js site to a public URL with Vercel.
-                        </p>
-                    </a>
-                </div>
-            </main>
-
-            <footer>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by{' '}
-                    <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-                </a>
-            </footer>
 
             <style jsx>{`
         main {
