@@ -81,7 +81,16 @@ class Forward extends React.Component {
     return (
       <div className={styles.container}>
         <Head>
-          <title>Create Next App</title>
+          <title>Reverse Foodle</title>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+          <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100&display=swap" rel="stylesheet"/>
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+          <link
+          href="https://fonts.googleapis.com/css2?family=Bangers&family=Big+Shoulders+Text:wght@100&display=swap"
+          rel="stylesheet"/>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
@@ -105,8 +114,14 @@ class Forward extends React.Component {
         </footer>
 
         <style jsx>{`
+          h1 {
+            textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 1px 3px 2px black',
+            fontSize: 28,
+          }
           main {
             padding: 5rem 0;
+            font: 'Bangers, cursive',
+            color: 'white',
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -165,13 +180,6 @@ var food_data = require('../deytabase.json');
   return {
     props: {
       food_data
-      // "name": "Apple",
-      // "image_url": "https://usapple.org/wp-content/uploads/2019/10/apple-pink-lady.png",
-      // "calories": 52,
-      // "fat": 1,
-      // "carbs": 13.8, 
-      // "sugar": 10.4,
-      // "protein": 1
     }
   }
 }
