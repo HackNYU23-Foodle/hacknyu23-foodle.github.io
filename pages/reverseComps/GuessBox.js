@@ -32,6 +32,7 @@ export default function GuessBox(props) {
                 onKeyDown={(event) => {
                     if (event.keyCode === 13) {
                         props.handleEnter(event.target.value)
+                        event.target.value = '';
                     }
 
                 }}

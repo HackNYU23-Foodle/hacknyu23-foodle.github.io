@@ -4,6 +4,8 @@ import ReverseAnswerContainer from "./reverseComps/ReverseAnswerContainer";
 import GuessBox from "./reverseComps/GuessBox";
 import CategoryContainer from "./reverseComps/CategoryContainer";
 import React, { useState } from 'react';
+import Confetti from "react-confetti";
+// import useWindowSize from 'react-use/lib/useWindowSize'
 import Header from './Header'
 import {userAgentFromString} from "next/server";
 
@@ -25,13 +27,29 @@ let foodInfo = { // Name, Calroies, Country origin, Flavor, Category, Time of ea
 
 export default function Reverse() {
     const [guesses, setGuesses] = useState([]);
+    const [win, setWin] = useState(false)
+    const [confetti, setConfetti] = useState(() => <div></div>)
+    // const { width, height } = [500, 500]
 
+
+    function handleWin() {
+        setWin(true);
+        setConfetti(() => {
+            return (
+                <Confetti width={window.innerWidth} height={window.innerHeight}/>
+            )
+        })
+
+    }
 
     function handleEnter(name) { // Callback prop to GuessBox
-        console.log("Entering handler")
-        if(name in foodInfo) {
-            console.log("Passed in if statement")
+        if(name in foodInfo && !win) {
             setGuesses([foodInfo[name]].concat(guesses));
+
+            if(JSON.stringify(foodInfo[name]) === JSON.stringify(answer)) {
+                console.log("win")
+                handleWin()
+            }
         }
     }
 
@@ -39,7 +57,9 @@ export default function Reverse() {
 
 
 
-        <div className={styles.container}>
+        <div className={styles.container} style={{justifyContent:"start", paddingTop: "10%"}}>
+            {confetti}
+            {/*// confetti for win */}
             <Head>
                 <title>Reverse Foodle</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -61,7 +81,7 @@ export default function Reverse() {
                 <GuessBox handleEnter={handleEnter}/>
 
             </div>
-            <div style={{display: "flex", flexDirection: "column", alignItems:"end"}}>
+            <div style={{display: "flex", flexDirection: "column", alignItems:"start"}}>
                 <CategoryContainer/>
                 {/*<ReverseAnswerContainer answer={answer} info={info}/>*/}
                 {guesses.map((item, index) => {
