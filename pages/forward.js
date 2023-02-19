@@ -322,7 +322,7 @@ class Forward extends React.Component {
  } 
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps (context) {
 var food_data = require('../deytabase.json');
   return {
     props: {

@@ -12,6 +12,9 @@ let spacing = "34px";    // Spacing for individual boxes
 
 
 function generateBoxes(info, answer) {
+    if (!info) {
+        return "Loading...";
+    }
     return( info.map((item,index)=> {
         return (
             <Grid key={index} container sx={{paddingLeft: "0px", paddingRight: spacing}} xs={'auto'}>
