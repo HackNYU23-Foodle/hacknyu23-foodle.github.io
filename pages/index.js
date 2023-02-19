@@ -35,6 +35,7 @@ class Home extends React.Component {
             padding: 5rem 0;
             flex: 1;
             background-color: #FFA101;
+            width:100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
