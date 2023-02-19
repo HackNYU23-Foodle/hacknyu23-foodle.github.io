@@ -18,7 +18,7 @@ class Forward extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { 'name': random_food.product_name, 'image_url': random_food.image_url, 'calories': 0, 'fat': 0, 'carbs': 0, 'sugar': 0, 'protein': 0,
-    'actual_calories': random_food.energy_100g, 'actual_fat': random_food.fat_100g, 'actual_carbs': random_food.carbohydrates_100g, 'actual_sugar': random_food.sugars_100g, 'actual_protein': random_food.protein_100g };
+    'actual_calories': random_food.energy_100g, 'actual_fat': random_food.fat_100g, 'actual_carbs': random_food.carbohydrates_100g, 'actual_sugar': random_food.sugars_100g, 'actual_protein': random_food.proteins_100g };
   }
 
   handleChange(event) {
@@ -59,24 +59,30 @@ class Forward extends React.Component {
     let sugar_correct = false
     let protein_correct = false
 
-    if (calories >= actual_calories * 0.8 && calories <= actual_calories * 1.1) {
-      console.log(calories);
-      console.log(actual_calories);
+    if (calories >= actual_calories * 0.8 && calories <= actual_calories * 1.3) {
+      // console.log(calories);
+      // console.log(actual_calories);
       calories_correct = true
     }
-    if (fat >= actual_fat * 0.9 && fat <= actual_fat * 1.1) {
+    if (fat >= actual_fat * 0.7 && fat <= actual_fat * 1.3) {
       fat_correct = true
     }
-    if (carbs >= actual_carbs * 0.9 && carbs <= actual_carbs * 1.1) {
+    if (carbs >= actual_carbs * 0.7 && carbs <= actual_carbs * 1.3) {
       carbs_correct = true
     }
-    if (sugar >= actual_sugar * 0.9 && sugar <= actual_sugar * 1.1) {
+    if (sugar >= actual_sugar * 0.7 && sugar <= actual_sugar * 1.3) {
       sugar_correct = true
     }
-    if (protein >= actual_protein * 0.9 && protein <= actual_protein * 1.1) {
+    if (protein >= actual_protein * 0.7 && protein <= actual_protein * 1.3) {
       protein_correct = true
     }
 
+    console.log(calories_correct)
+    console.log(fat_correct)
+    console.log(carbs_correct)
+    console.log(sugar_correct)
+    console.log(protein_correct)
+    
     if (calories_correct && fat_correct && carbs_correct && sugar_correct && protein_correct) {
       alert("You Got It!");
     } else {
