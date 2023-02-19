@@ -3,10 +3,14 @@ import styles from '../styles/Home.module.css';
 import ReverseAnswerContainer from "./reverseComps/ReverseAnswerContainer";
 import GuessBox from "./reverseComps/GuessBox";
 import CategoryContainer from "./reverseComps/CategoryContainer";
+import { useState } from 'react';
+
 
 
 function handleEnter() { // Callback prop to GuessBox
-    console.log("Enter handled");
+    // return(
+    //     // <ReverseAnswerContainer answer={answer}
+    // )
 }
 
 let answer = ['Apple', '101', 'France', '502']
@@ -17,6 +21,7 @@ export default function Reverse() {
 
 
     return (
+
         <div className={styles.container}>
             <Head>
                 <title>Reverse Foodle</title>
@@ -47,6 +52,8 @@ export default function Reverse() {
           padding: 5rem 0;
           flex: 1;
           display: flex;
+          background-color: #FFA101;
+          width:100%;
           flex-direction: column;
           justify-content: center;
           align-items: center;
