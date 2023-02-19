@@ -9,26 +9,31 @@ import {userAgentFromString} from "next/server";
 
 
 
-function handleEnter(name) { // Callback prop to GuessBox
-    if(name in foodInfo) {
-        setGuesses(guesses.concat(foodInfo[name]));
-    }
-}
 
-let answer = ['Apple', '101', 'France', '502']
+
+let answer = ['Apple', '100', 'Kazakhstan', 'Sweet', 'Fruit', 'Snack']
 let info = ['Banana', '502', 'Germany', '502']
 
 
 let foodInfo = { // Name, Calroies, Country origin, Flavor, Category, Time of eating
-    apple: ['Apple', '101', 'Kazakhstan', 'Sweet', 'Fruit', 'Snack'],
-    pancake: ['Pancake', '401', 'Greece', 'Sweet', 'Grain', 'Breakfast'],
-    steak: ['Steak', '301', 'All', 'Savory', 'Meat', 'Dinner'],
-    tomato: ['Tomato', '301', 'Mexico', 'Sweet', 'Veggie', 'Ingredient'],
+    apple: ['Apple', '100', 'Kazakhstan', 'Sweet', 'Fruit', 'Snack'],
+    banana: ['Banana', '100', 'New Guinea', 'Sweet', 'Fruit', 'Snack'],
+    pancake: ['Pancake', '400', 'Greece', 'Sweet', 'Grain', 'Breakfast'],
+    steak: ['Steak', '300', 'All', 'Savory', 'Meat', 'Dinner'],
+    tomato: ['Tomato', '100', 'Mexico', 'Sweet', 'Veggie', 'Ingredient'],
 }
 
 export default function Reverse() {
     const [guesses, setGuesses] = useState([]);
 
+
+    function handleEnter(name) { // Callback prop to GuessBox
+        console.log("Entering handler")
+        if(name in foodInfo) {
+            console.log("Passed in if statement")
+            setGuesses([foodInfo[name]].concat(guesses));
+        }
+    }
 
     return (
 
@@ -60,8 +65,10 @@ export default function Reverse() {
                 <CategoryContainer/>
                 {/*<ReverseAnswerContainer answer={answer} info={info}/>*/}
                 {guesses.map((item, index) => {
+                    console.log(item);
                     return(
-                        <ReverseAnswerContainer answer={answer} info={index}/>
+
+                        <ReverseAnswerContainer answer={answer} info={item}/>
                         )
                     }
                     )}
