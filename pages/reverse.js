@@ -14,8 +14,6 @@ let info = ['Banana', '502', 'Germany', '502']
 
 export default function Reverse() {
 
-
-
     return (
         <div className={styles.container}>
             <Head>
@@ -39,8 +37,6 @@ export default function Reverse() {
                 <CategoryContainer/>
                 <ReverseAnswerContainer answer={answer} info={info}/>
             </div>
-
-
 
             <style jsx>{`
         main {
