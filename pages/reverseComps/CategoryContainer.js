@@ -8,7 +8,7 @@ let boxSize = 100;       // Individual box size
 let containerSize = 800; // Container width
 let spacing = "34px";    // Spacing for individual boxes
 
-let categories=['Name', 'Category2','asdadsd  ', 'Category4', 'Category5','Category6']
+let categories=['Name', 'Calories','Origin', 'FLavor', 'Category','Time of Eating']
 
 let boxes = categories.map((item,index)=> {
     return (

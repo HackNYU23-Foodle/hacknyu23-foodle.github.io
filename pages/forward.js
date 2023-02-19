@@ -5,6 +5,10 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import React from 'react';
 import FormControl from '@mui/material/FormControl';
+import ForwardInput from "./forwardComps/ForwardInput";
+import EastIcon from '@mui/icons-material/East';
+import IconButton from '@mui/material/IconButton';
+import Header from './Header'
 
 class Forward extends React.Component {
   constructor(props) {
@@ -19,6 +23,7 @@ class Forward extends React.Component {
 
   handleChange(event) {
     if (event.target.id == "calories") {
+      console.log("Hello");
       this.setState({ calories: event.target.value });
     } else if (event.target.id == "fat") {
       this.setState({ fat: event.target.value });
@@ -55,6 +60,8 @@ class Forward extends React.Component {
     let protein_correct = false
 
     if (calories >= actual_calories * 0.8 && calories <= actual_calories * 1.1) {
+      console.log(calories);
+      console.log(actual_calories);
       calories_correct = true
     }
     if (fat >= actual_fat * 0.9 && fat <= actual_fat * 1.1) {
@@ -80,6 +87,7 @@ class Forward extends React.Component {
   render() {
     return (
       <div className={styles.container}>
+
         <Head>
           <title>Reverse Foodle</title>
           <link rel="icon" href="/favicon.ico" />
@@ -94,24 +102,42 @@ class Forward extends React.Component {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main>
-          <h1>Foodle</h1>
-          <h2> Guess the Info! </h2>
-          <h2> {this.state.name} </h2>
-          <img src={this.state.image_url} alt="Foodle" width={500} height={500} />
-          <form className="foodle_form" onSubmit={this.handleSubmit}>   
-            <TextField id="calories" label="Calories" type="number" InputLabelProps={{ shrink: true }} width="4px" onChange={this.handleChange} defaultValue={0} required/>
-            <TextField id="fat" label="Fat" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required/>
-            <TextField id="carbs" label="Carbohydrates" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />
-            <TextField id="sugar" label="Sugar" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />
-            <TextField id="protein" label="Protein" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />
-            <button type="submit">Submit</button>
+        <Header>
+
+        </Header>
+
+        <main style={{fontFamily:"Bangers, cursive", color:"white", fontSize: '30px', }}>
+
+          <img src="/rice and applepng.png" style={{ width: '1500px', height: '1030px', position: 'absolute', left: '580px', top:'0px', opacity:'.85'}}/>
+          <div style={{textAlign:"center"}}>
+
+            <h4 style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 1px 3px 2px black',}}> Guess the Info! </h4>
+            <h4 style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 1px 3px 2px black',}}> {this.state.name} </h4>
+          </div>
+          <img src={this.state.image_url} alt="Foodle" width={300} height={300} />
+          <div style={{width: '50px', height: '50px'}}/>
+          <form className="foodle_form" onSubmit={this.handleSubmit} style={{textShadow:'0 0 0 0 #0000'}}>
+            {/*<TextField id="calories" label="Calories" type="number" InputLabelProps={{ shrink: true }} width="4px" onChange={this.handleChange} defaultValue={0} required/>*/}
+            <ForwardInput id={"calories"} label={"Calories"} handle={this.handleChange}/>
+            {/*<TextField id="fat" label="Fat" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required/>*/}
+            <ForwardInput id={"fat"} label={"Fat"} handle={this.handleChange}/>
+            {/*<TextField id="carbs" label="Carbohydrates" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />*/}
+            <ForwardInput id={"carbs"} label={"Carbohydrates"} handle={this.handleChange}/>
+            {/*<TextField id="sugar" label="Sugar" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />*/}
+            <ForwardInput id={"sugar"} label={"Sugar"} handle={this.handleChange}/>
+            {/*<TextField id="protein" label="Protein" type="number" InputLabelProps={{ shrink: true, }} width="10px" onChange={this.handleChange} defaultValue={0} required />*/}
+            <ForwardInput id={"protein"} label={"Protein"} handle={this.handleChange}/>
+            <IconButton type={"submit"} color="primary" sx={{ p: '10px' }} aria-label="east">
+              <EastIcon  sx={{color: 'white'}}/>
+            </IconButton>
           </form>
         </main>
+
 
         <footer>
           Powered by Aneesh Maganti, Thaison Le, Calvin Tian, Michael Duong, Anish Kulkarni, and Deytabase Airlines
         </footer>
+
 
         <style jsx>{`
           h1 {
@@ -119,7 +145,7 @@ class Forward extends React.Component {
             fontSize: 28,
           }
           main {
-            padding: 5rem 0;
+            padding: 0;
             font: 'Bangers, cursive',
             color: 'white',
             flex: 1;
@@ -128,6 +154,9 @@ class Forward extends React.Component {
             justify-content: center;
             align-items: center;
             background-color: #FFA101;
+            max-width:100vw;
+            
+            
           }
           footer {
             width: 100%;
@@ -165,6 +194,8 @@ class Forward extends React.Component {
             font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
               Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
               sans-serif;
+              max-width:100vw;
+              overflow:hidden;
           }
           * {
             box-sizing: border-box;

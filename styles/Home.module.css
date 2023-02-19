@@ -1,3 +1,5 @@
+
+
 .container {
   min-height: 100vh;
   /*padding: 0 0.5rem;*/
@@ -6,6 +8,10 @@
   justify-content: center;
   align-items: center;
   background-color: #FFA101;
+  overflow:hidden;
+  max-width: 100vw;
+  max-height: 100vh;
+
 }
 
 .title a {
