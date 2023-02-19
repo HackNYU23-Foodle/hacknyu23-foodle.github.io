@@ -19,7 +19,10 @@ export default function GuessBox(props) {
             sx={{ p: '2px 4px', display: 'flex',
                 alignItems: 'center', width: 400,
                 borderRadius:'25px', backgroundColor:'transparent',
-                outlineStyle:'solid', outlineColor:'white' }}
+                outlineStyle:'solid', outlineColor:'white',
+                justifyContent:'center'
+
+            }}
         >
             <InputBase
                 sx={{ ml: 1, flex: 1, fontFamily:'Big Shoulders Text, cursive', color:'white', fontSize: '25px', justifyContent:'center' }}

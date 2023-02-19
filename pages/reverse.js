@@ -9,6 +9,9 @@ function handleEnter() { // Callback prop to GuessBox
     console.log("Enter handled");
 }
 
+let answer = ['Apple', '101', 'France', '502']
+let info = ['Banana', '502', 'Germany', '502']
+
 export default function Reverse() {
 
 
@@ -21,14 +24,20 @@ export default function Reverse() {
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100&display=swap" rel="stylesheet"/>
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+                <link
+                href="https://fonts.googleapis.com/css2?family=Bangers&family=Big+Shoulders+Text:wght@100&display=swap"
+                rel="stylesheet"/>
             </Head>
 
-            <div>
-                {/*<GuessBox handleEnter={handleEnter}/>*/}
-                <CategoryContainer/>
+            <div style={{display: "flex", flexDirection: "column", alignItems:"center"}}>
+                <GuessBox handleEnter={handleEnter}/>
+
             </div>
-            <div>
-                <ReverseAnswerContainer/>
+            <div style={{display: "flex", flexDirection: "column", alignItems:"end"}}>
+                <CategoryContainer/>
+                <ReverseAnswerContainer answer={answer} info={info}/>
             </div>
 
 
