@@ -112,6 +112,7 @@ class Forward extends React.Component {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-color: #FFA101;
           }
           footer {
             width: 100%;
