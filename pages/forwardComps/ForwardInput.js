@@ -21,7 +21,7 @@ const ValidationTextField = styled(TextField)({
 
 export default function ForwardInput(props) {
     return(
-            <ValidationTextField sx={{ ml: 1, flex: 1, color:'white', width: "100px", fontSize: '25px', justifyContent:'center'}}
+            <ValidationTextField sx={{ ml: 1, flex: 1, color: 'white', width: "100px", fontSize: '25px', justifyContent:'center'}}
                 id={props.id} label={props.label} type="number" InputLabelProps={{ shrink: true }} width="4px" onChange={props.handle} defaultValue={0} required/>
     )
 
