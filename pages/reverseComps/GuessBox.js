@@ -30,7 +30,7 @@ export default function GuessBox(props) {
     const onMouseLeave = () => setIsHovered(false);
     return(
         <Paper
-            // component="form"
+            // component="form"asdads
             sx={{ p: '2px 4px', display: 'flex',
                 alignItems: 'center', width: 400,
                 borderRadius:'25px', backgroundColor:'transparent',
@@ -39,18 +39,6 @@ export default function GuessBox(props) {
 
             }}
         >
-            {/*<HtmlTooltip*/}
-            {/*    title={*/}
-            {/*        <React.Fragment>*/}
-            {/*            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}*/}
-            {/*            {"It's very engaging. Right?"}*/}
-            {/*        </React.Fragment>*/}
-            {/*    }*/}
-            {/*>*/}
-            {/*    <IconButton onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} color="primary" sx={{ p: '10px' }} aria-label="east">*/}
-            {/*        <HelpOutlineIcon sx={{color: 'white'}}/>*/}
-            {/*    </IconButton>*/}
-            {/*</HtmlTooltip>*/}
 
             <Tooltip title={"IN BETA- Available choices are: apple, banana, pancake, steak, tomato"}>
                 <IconButton onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} color="primary" sx={{ p: '10px' }} aria-label="east">
